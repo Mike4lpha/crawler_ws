@@ -1,0 +1,57 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    diff_drive_controller:
+      type: diff_drive_controller/DiffDriveController
+
+    pan_controller:
+      type: position_controllers/JointGroupPositionController
+
+diff_drive_controller:
+  ros__parameters:
+    left_wheel_names:  ["fl", "bl"]
+    right_wheel_names: ["fr", "br"]
+
+    # ✅ corrected separation — joint origin + wheel offset
+    wheel_separation: 0.219        # was 0.219
+
+    # ✅ correct radius for 6 inch wheel
+    wheel_radius: 0.0762
+
+    # ✅ wheel separation multiplier — fine tune without changing base value
+    wheel_separation_multiplier: 1.0
+
+    # ✅ radius multipliers — fine tune each side independently
+    left_wheel_radius_multiplier: 1.0
+    right_wheel_radius_multiplier: 1.0
+
+    odom_frame_id: odom
+    base_frame_id: base_link
+
+    enable_odom_tf: true
+    open_loop: false
+    publish_rate: 30.0
+    cmd_vel_timeout: 0.5
+    use_stamped_vel: false
+
+    # ✅ velocity limits
+    linear.x.max_velocity:  0.5
+    linear.x.min_velocity: -0.5
+    angular.z.max_velocity:  2.0
+    angular.z.min_velocity: -2.0
+
+    # ✅ acceleration limits — too high causes overshoot
+    linear.x.max_acceleration:  0.5
+    linear.x.min_acceleration: -0.5
+    angular.z.max_acceleration:  3.0
+    angular.z.min_acceleration: -3.0
+
+pan_controller:
+  ros__parameters:
+    joints:
+      - pan
+    interface_name: position

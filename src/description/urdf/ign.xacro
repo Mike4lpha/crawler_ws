@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<robot name="inspection_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ✅ ALL plugins in ONE flat <gazebo> block -->
+  <gazebo>
+
+    <plugin filename="ignition-gazebo-sensors-system"
+            name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <!-- <plugin filename="ignition-gazebo-joint-state-publisher-system"
+            name="ignition::gazebo::systems::JointStatePublisher">
+      <topic>joint_states</topic>
+      <joint_name>fl</joint_name>
+      <joint_name>bl</joint_name>
+      <joint_name>fr</joint_name>
+      <joint_name>br</joint_name>
+      <joint_name>pan</joint_name>
+    </plugin> -->
+
+    <!-- ✅ DiffDrive handles odom and TF — no OdometryPublisher needed -->
+    <!-- <plugin filename="ignition-gazebo-diff-drive-system"
+            name="ignition::gazebo::systems::DiffDrive">
+      <left_joint>fl</left_joint>
+      <left_joint>bl</left_joint>
+      <right_joint>fr</right_joint>
+      <right_joint>br</right_joint>
+
+      <wheel_separation>0.219</wheel_separation>
+      <wheel_radius>0.0762</wheel_radius>
+
+      <max_acceleration>2.0</max_acceleration>       
+      <max_linear_velocity>0.5</max_linear_velocity>
+      <min_linear_velocity>-0.5</min_linear_velocity>
+      <max_angular_velocity>2.0</max_angular_velocity>  
+      <min_angular_velocity>-2.0</min_angular_velocity>
+
+      <topic>/cmd_vel</topic>         
+      <odom_topic>/odom</odom_topic>  
+      <tf_topic>/tf</tf_topic>       
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_link</child_frame_id>
+
+      <odom_publish_frequency>30</odom_publish_frequency>
+    </plugin> -->
+
+  </gazebo>
+
+  <!-- ✅ Ignition-correct friction for all 4 wheels -->
+
+  <!-- For Ignition Fortress -->
+  <gazebo reference="6in_wheel">
+    <collision>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.5</mu>
+            <mu2>0.01</mu2>
+            <slip1>0.1</slip1>
+            <slip2>1.0</slip2>
+            <fdir1>1 0 0</fdir1>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>1e4</kp>         <!-- ✅ reduced from 1e6 — less stiff -->
+            <kd>10.0</kd>        <!-- ✅ increased damping -->
+            <min_depth>0.001</min_depth>
+            <max_vel>0.1</max_vel>
+          </ode>
+        </contact>
+      </surface>
+    </collision>
+  </gazebo>
+
+  <gazebo reference="6in_wheel_2">
+    <collision>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.5</mu>
+            <mu2>0.01</mu2>
+            <slip1>0.1</slip1>
+            <slip2>1.0</slip2>
+            <fdir1>1 0 0</fdir1>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>1e4</kp>
+            <kd>10.0</kd>
+            <min_depth>0.001</min_depth>
+            <max_vel>0.1</max_vel>
+          </ode>
+        </contact>
+      </surface>
+    </collision>
+  </gazebo>
+
+  <gazebo reference="6in_wheel_3">
+    <collision>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.5</mu>
+            <mu2>0.01</mu2>
+            <slip1>0.1</slip1>
+            <slip2>1.0</slip2>
+            <fdir1>1 0 0</fdir1>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>1e4</kp>
+            <kd>10.0</kd>
+            <min_depth>0.001</min_depth>
+            <max_vel>0.1</max_vel>
+          </ode>
+        </contact>
+      </surface>
+    </collision>
+  </gazebo>
+
+  <gazebo reference="6in_wheel_4">
+    <collision>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.5</mu>
+            <mu2>0.01</mu2>
+            <slip1>0.1</slip1>
+            <slip2>1.0</slip2>
+            <fdir1>1 0 0</fdir1>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>1e4</kp>
+            <kd>10.0</kd>
+            <min_depth>0.001</min_depth>
+            <max_vel>0.1</max_vel>
+          </ode>
+        </contact>
+      </surface>
+    </collision>
+  </gazebo>
+
+  <!-- ........................... CAMERA ................................... -->
+
+  <gazebo reference="camera_link">
+    <sensor name="inspection_camera" type="camera">
+      <ignition_frame_id>camera_link</ignition_frame_id>
+      <camera name="inspection_camera">
+        <horizontal_fov>1.2043</horizontal_fov>
+        <lens>
+          <intrinsics>
+            <fx>915.3003540039062</fx>
+            <fy>914.0320434570312</fy>
+            <cx>642.724365234375</cx>
+            <cy>361.9780578613281</cy>
+            <s>0</s>
+          </intrinsics>
+        </lens>
+        <distortion>
+          <k1>0.0</k1>
+          <k2>0.0</k2>
+          <k3>0.0</k3>
+          <p1>0.0</p1>
+          <p2>0.0</p2>
+          <center>0.5 0.5</center>
+        </distortion>
+        <image>
+          <width>1280</width>
+          <height>720</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>5</update_rate>
+      <visualize>0</visualize>
+      <topic>camera/image_raw</topic>
+      <camera_info_topic>camera/camera_info</camera_info_topic>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+
+    <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+        <parameters>$(find description)/config/controllers.yaml</parameters>
+    </plugin>
+
+  </gazebo>
+
+</robot>

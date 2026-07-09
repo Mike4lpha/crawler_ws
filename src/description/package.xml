@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>description</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="jayjitmandal16@gmail.com">mikealpha</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- ........................... URDF / XACRO ................................... -->
+  <depend>urdf</depend>
+  <depend>xacro</depend>
+
+  <!-- ........................... ROBOT STATE PUBLISHER ................................... -->
+  <depend>robot_state_publisher</depend>
+  <depend>joint_state_publisher</depend>
+  <depend>joint_state_publisher_gui</depend>
+
+  <!-- ........................... RVIZ ................................... -->
+  <depend>rviz2</depend>
+
+  <!-- ........................... GAZEBO CLASSIC 11 ................................... -->
+  <depend>gazebo_ros</depend>
+  <depend>gazebo_ros2_control</depend>
+  <depend>gazebo_plugins</depend>
+
+  <!-- ........................... IGNITION FORTRESS ................................... -->
+  <depend>ros_gz_sim</depend>
+  <depend>ros_gz_bridge</depend>
+  <depend>ign_ros2_control</depend>
+
+  <!-- ........................... ROS2 CONTROL ................................... -->
+  <depend>ros2_control</depend>
+  <depend>ros2_controllers</depend>
+  <depend>controller_manager</depend>
+  <depend>diff_drive_controller</depend>
+  <depend>joint_state_broadcaster</depend>
+  <depend>position_controllers</depend>
+
+  <!-- ........................... MESSAGES ................................... -->
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+
+  <!-- ........................... LAUNCH ................................... -->
+  <depend>launch</depend>
+  <depend>launch_ros</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

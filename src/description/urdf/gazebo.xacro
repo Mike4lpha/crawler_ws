@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<robot name="inspection_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ........................... WHEEL FRICTION ................................... -->
+
+  <gazebo reference="6in_wheel">
+    <mu1>2.0</mu1>
+    <mu2>2.0</mu2>
+    <kp>1e6</kp>       <!-- contact stiffness -->
+    <kd>1.0</kd>       <!-- contact damping -->
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+  </gazebo>
+
+  <gazebo reference="6in_wheel_2">
+    <mu1>2.0</mu1>
+    <mu2>2.0</mu2>
+    <kp>1e6</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+  </gazebo>
+
+  <gazebo reference="6in_wheel_3">
+    <mu1>2.0</mu1>
+    <mu2>2.0</mu2>
+    <kp>1e6</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+  </gazebo>
+
+  <gazebo reference="6in_wheel_4">
+    <mu1>2.0</mu1>
+    <mu2>2.0</mu2>
+    <kp>1e6</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="diff_drive_controller"
+            filename="libgazebo_ros_diff_drive.so">
+
+      <!-- <left_joint>fl</left_joint> -->
+      <left_joint>bl</left_joint>
+      <!-- <right_joint>fr</right_joint> -->
+      <right_joint>br</right_joint>
+
+      <wheel_separation>0.219</wheel_separation>
+      <wheel_diameter>0.1524</wheel_diameter>   
+
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>false</publish_wheel_tf>
+
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+
+      <update_rate>30</update_rate>
+    </plugin>
+
+    <plugin name="joint_state_publisher"
+            filename="libgazebo_ros_joint_state_publisher.so">
+      <ros>
+        <remapping>~/out:=joint_states</remapping>
+      </ros>
+      <update_rate>30</update_rate>
+      <joint_name>fl</joint_name>
+      <joint_name>bl</joint_name>
+      <joint_name>fr</joint_name>
+      <joint_name>br</joint_name>
+      <joint_name>pan</joint_name>
+    </plugin>
+  </gazebo>
+
+  <!-- ........................... CAMERA ................................... -->
+
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="camera">
+      <always_on>true</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <camera>
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>1280</width>
+          <height>720</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.05</near>
+          <far>8.0</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <frameName>camera_link_optical</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- ........................... ROS2 CONTROL ................................... -->
+
+  <gazebo>
+    <plugin filename="libgazebo_ros2_control.so"
+            name="gazebo_ros2_control">
+      <parameters>$(find description)/config/controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+</robot>

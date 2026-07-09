@@ -1,0 +1,782 @@
+<?xml version="1.0" ?>
+
+<robot name="inspection_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- <xacro:include filename="$(find description)/urdf/gazebo.xacro" /> -->
+  <!-- <xacro:include filename="$(find description)/urdf/gazebo_ros2_control.xacro" /> -->
+  <xacro:include filename="$(find description)/urdf/ign.xacro" />
+  <xacro:include filename="$(find description)/urdf/ign_ros2_control.xacro" />
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.00411556 1.05443e-07 0.0423144" rpy="0 0 0"/>
+      <mass value="5.10018"/>
+      <inertia ixx="0.0179618" ixy="6.87201e-06" ixz="-7.24689e-05" iyy="0.0363852" iyz="3.01745e-06" izz="0.042854"/>
+    </inertial>
+    <!-- Part wheel_cover -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/wheel_cover.stl"/>
+      </geometry>
+      <material name="wheel_cover_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/wheel_cover.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part esc -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/esc.stl"/>
+      </geometry>
+      <material name="esc_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/esc.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 60teeth_2gt_5mm_pulley -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/60teeth_2gt_5mm_pulley.stl"/>
+      </geometry>
+      <material name="60teeth_2gt_5mm_pulley_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/60teeth_2gt_5mm_pulley.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part esc_2 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/esc__2.stl"/>
+      </geometry>
+      <material name="esc_2_material">
+        <color rgba="0.972549 0.529412 0.00392157 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/esc__2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 20teeth_2gt_3mm_pulley -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/20teeth_2gt_3mm_pulley.stl"/>
+      </geometry>
+      <material name="20teeth_2gt_3mm_pulley_material">
+        <color rgba="0.917647 0.917647 0.917647 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/20teeth_2gt_3mm_pulley.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 60teeth_2gt_5mm_pulley_2 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/60teeth_2gt_5mm_pulley__2.stl"/>
+      </geometry>
+      <material name="60teeth_2gt_5mm_pulley_2_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/60teeth_2gt_5mm_pulley__2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part pulley_cover_plate -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/pulley_cover_plate.stl"/>
+      </geometry>
+      <material name="pulley_cover_plate_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/pulley_cover_plate.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part esc_3 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/esc__3.stl"/>
+      </geometry>
+      <material name="esc_3_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/esc__3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wheel_cover_2 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/wheel_cover__2.stl"/>
+      </geometry>
+      <material name="wheel_cover_2_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/wheel_cover__2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part pulley_cover_plate_2 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/pulley_cover_plate__2.stl"/>
+      </geometry>
+      <material name="pulley_cover_plate_2_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/pulley_cover_plate__2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part rear_right_motor -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/rear_right_motor.stl"/>
+      </geometry>
+      <material name="rear_right_motor_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/rear_right_motor.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part pulley_cover_plate_3 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/pulley_cover_plate__3.stl"/>
+      </geometry>
+      <material name="pulley_cover_plate_3_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/pulley_cover_plate__3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 60teeth_2gt_5mm_pulley_3 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/60teeth_2gt_5mm_pulley__3.stl"/>
+      </geometry>
+      <material name="60teeth_2gt_5mm_pulley_3_material">
+        <color rgba="0.972549 0.529412 0.00392157 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/60teeth_2gt_5mm_pulley__3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part pulleu_cover_plate -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/pulleu_cover_plate.stl"/>
+      </geometry>
+      <material name="pulleu_cover_plate_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/pulleu_cover_plate.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part camera_dome -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/camera_dome.stl"/>
+      </geometry>
+      <material name="camera_dome_material">
+        <color rgba="0.901961 0.901961 0.901961 0.498039"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/camera_dome.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part base_link -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/base_link.stl"/>
+      </geometry>
+      <material name="base_link_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/base_link.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 60teeth_2gt_5mm_pulley_4 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/60teeth_2gt_5mm_pulley__4.stl"/>
+      </geometry>
+      <material name="60teeth_2gt_5mm_pulley_4_material">
+        <color rgba="0.972549 0.529412 0.00392157 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/60teeth_2gt_5mm_pulley__4.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part lid -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/lid.stl"/>
+      </geometry>
+      <material name="lid_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/lid.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part rear_left_motor -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/rear_left_motor.stl"/>
+      </geometry>
+      <material name="rear_left_motor_material">
+        <color rgba="0.917647 0.917647 0.917647 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/rear_left_motor.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part front_left_motor -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/front_left_motor.stl"/>
+      </geometry>
+      <material name="front_left_motor_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/front_left_motor.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 20teeth_2gt_3mm_pulley_2 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/20teeth_2gt_3mm_pulley__2.stl"/>
+      </geometry>
+      <material name="20teeth_2gt_3mm_pulley_2_material">
+        <color rgba="0.917647 0.917647 0.917647 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/20teeth_2gt_3mm_pulley__2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part cable_connector -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/cable_connector.stl"/>
+      </geometry>
+      <material name="cable_connector_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/cable_connector.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part front_right_motor -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/front_right_motor.stl"/>
+      </geometry>
+      <material name="front_right_motor_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/front_right_motor.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wheel_cover_3 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/wheel_cover__3.stl"/>
+      </geometry>
+      <material name="wheel_cover_3_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/wheel_cover__3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wheel_cover_4 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/wheel_cover__4.stl"/>
+      </geometry>
+      <material name="wheel_cover_4_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/wheel_cover__4.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 20teeth_2gt_3mm_pulley_3 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/20teeth_2gt_3mm_pulley__3.stl"/>
+      </geometry>
+      <material name="20teeth_2gt_3mm_pulley_3_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/20teeth_2gt_3mm_pulley__3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part esc_4 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/esc__4.stl"/>
+      </geometry>
+      <material name="esc_4_material">
+        <color rgba="0.917647 0.917647 0.917647 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/esc__4.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 20teeth_2gt_3mm_pulley_4 -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/20teeth_2gt_3mm_pulley__4.stl"/>
+      </geometry>
+      <material name="20teeth_2gt_3mm_pulley_4_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/20teeth_2gt_3mm_pulley__4.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part air_fill_valve -->
+    <visual>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/air_fill_valve.stl"/>
+      </geometry>
+      <material name="air_fill_valve_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/air_fill_valve.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link 6in_wheel -->
+  <link name="6in_wheel">
+    <inertial>
+      <origin xyz="3.90061e-07 -2.54296e-06 -0.0129745" rpy="0 0 0"/>
+      <mass value="0.571285"/>
+      <inertia ixx="0.00084212" ixy="-2.3e-11" ixz="-1.06e-10" iyy="0.00084212" iyz="6.89e-10" izz="0.00162728"/>
+    </inertial>
+    <!-- Part 6in_wheel -->
+    <visual>
+      <origin xyz="-0.1051 -0.0275 -0.1065" rpy="-1.5708 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/6in_wheel.stl"/>
+      </geometry>
+      <material name="6in_wheel_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.1051 -0.0275 -0.1065" rpy="-1.5708 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/6in_wheel.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from base_link to 6in_wheel -->
+  <joint name="fr" type="continuous">
+    <origin xyz="0.105088 -0.1095 0.0276129" rpy="1.5708 0 0"/>
+    <parent link="base_link"/>
+    <child link="6in_wheel"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="50" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+    <dynamics damping="0.01" friction="0.01"/>
+  </joint>
+  <!-- Link 6in_wheel_2 -->
+  <link name="6in_wheel_2">
+    <inertial>
+      <origin xyz="-5.27166e-06 -2.54296e-06 -0.0129745" rpy="0 0 0"/>
+      <mass value="0.571285"/>
+      <inertia ixx="0.00084212" ixy="3.09e-10" ixz="1.429e-09" iyy="0.000842119" iyz="6.89e-10" izz="0.00162728"/>
+    </inertial>
+    <!-- Part 6in_wheel_2 -->
+    <visual>
+      <origin xyz="0.1051 -0.0275 -0.1065" rpy="-1.5708 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/6in_wheel__2.stl"/>
+      </geometry>
+      <material name="6in_wheel_2_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.1051 -0.0275 -0.1065" rpy="-1.5708 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/6in_wheel__2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from base_link to 6in_wheel_2 -->
+  <joint name="br" type="continuous">
+    <origin xyz="-0.1051 -0.1095 0.0274971" rpy="1.5708 0 0"/>
+    <parent link="base_link"/>
+    <child link="6in_wheel_2"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="50" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+    <dynamics damping="0.01" friction="0.01"/>
+  </joint>
+  <!-- Link 6in_wheel_3 -->
+  <link name="6in_wheel_3">
+    <inertial>
+      <origin xyz="-1.9237e-07 -1.25413e-06 -0.0129745" rpy="0 0 0"/>
+      <mass value="0.571285"/>
+      <inertia ixx="0.00084212" ixy="2.3e-11" ixz="-1.06e-10" iyy="0.00084212" iyz="-6.89e-10" izz="0.00162728"/>
+    </inertial>
+    <!-- Part 6in_wheel_3 -->
+    <visual>
+      <origin xyz="-0.105101 0.0274962 -0.1065" rpy="1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/6in_wheel__3.stl"/>
+      </geometry>
+      <material name="6in_wheel_3_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.105101 0.0274962 -0.1065" rpy="1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/6in_wheel__3.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from base_link to 6in_wheel_3 -->
+  <joint name="fl" type="continuous">
+    <origin xyz="0.105088 0.1095 0.0276129" rpy="-1.5708 0 -0"/>
+    <parent link="base_link"/>
+    <child link="6in_wheel_3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="50" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+    <dynamics damping="0.01" friction="0.01"/>
+  </joint>
+  <!-- Link 6in_wheel_4 -->
+  <link name="6in_wheel_4">
+    <inertial>
+      <origin xyz="2.59986e-06 -1.25413e-06 -0.0129745" rpy="0 0 0"/>
+      <mass value="0.571285"/>
+      <inertia ixx="0.00084212" ixy="-3.09e-10" ixz="1.429e-09" iyy="0.000842119" iyz="-6.89e-10" izz="0.00162728"/>
+    </inertial>
+    <!-- Part 6in_wheel_4 -->
+    <visual>
+      <origin xyz="0.105108 0.0274962 -0.1065" rpy="1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/6in_wheel__4.stl"/>
+      </geometry>
+      <material name="6in_wheel_4_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.105108 0.0274962 -0.1065" rpy="1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/6in_wheel__4.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from base_link to 6in_wheel_4 -->
+  <joint name="bl" type="continuous">
+    <origin xyz="-0.1051 0.1095 0.0275" rpy="-1.5708 0 -0"/>
+    <parent link="base_link"/>
+    <child link="6in_wheel_4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="50" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+    <dynamics damping="0.01" friction="0.01"/>
+  </joint>
+  <!-- Link pan_and_tilt -->
+  <link name="pan_and_tilt">
+    <inertial>
+      <origin xyz="0.0169854 0.000962923 -0.0137749" rpy="0 0 0"/>
+      <mass value="0.0931715"/>
+      <inertia ixx="2.17613e-05" ixy="1.04498e-06" ixz="1.91243e-06" iyy="2.26582e-05" iyz="-5.98382e-07" izz="2.66699e-05"/>
+    </inertial>
+    <!-- Part pan_and_tilt -->
+    <visual>
+      <origin xyz="-0.0875 0.000494185 -0.0708" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/pan_and_tilt.stl"/>
+      </geometry>
+      <material name="pan_and_tilt_material">
+        <color rgba="0.917647 0.917647 0.917647 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0875 0.000494185 -0.0708" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/pan_and_tilt.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint from base_link to pan_and_tilt -->
+  <joint name="pan" type="revolute">
+    <origin xyz="0.0875 -0.000494185 0.0668" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="pan_and_tilt"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="10" velocity="2" lower="-0.52" upper="0.52"/>
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+
+  <link name="camera_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <box size="0.01 0.03 0.03" />
+      </geometry>
+      <material name="camera_link">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Camera mounted on pan-tilt -->
+  <joint name="camera_joint" type="fixed">
+    <parent link="pan_and_tilt"/>
+    <child link="camera_link"/>
+
+    <!-- Adjust these values to place camera correctly -->
+    <origin xyz="0.035 0.0 -0.015" rpy="0 0 0"/>
+  </joint>
+
+  <link name="camera_optical_frame"/>
+
+  <joint name="camera_optical_joint" type="fixed">
+    <parent link="camera_link"/>
+    <child link="camera_optical_frame"/>
+    <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
+  </joint>
+
+  <link name="light_fl">
+    <visual>
+      <geometry>
+        <box size="0.02 0.002 0.02"/>
+      </geometry>
+      <material name="led_white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="light_fr">
+    <visual>
+      <geometry>
+        <box size="0.02 0.002 0.02"/>
+      </geometry>
+      <material name="led_white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="light_bl">
+    <visual>
+      <geometry>
+        <box size="0.02 0.002 0.02"/>
+      </geometry>
+      <material name="led_white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="light_br">
+    <visual>
+      <geometry>
+        <box size="0.02 0.002 0.02"/>
+      </geometry>
+      <material name="led_white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Link face_plate -->
+  <link name="face_plate">
+    <inertial>
+      <origin xyz="5.2197e-08 0.0057711 -0.00161" rpy="0 0 0"/>
+      <mass value="0.0382468"/>
+      <inertia ixx="3.77276e-05" ixy="1.53e-10" ixz="-9e-12" iyy="6.16865e-05" iyz="-5.5269e-08" izz="9.9359e-05"/>
+    </inertial>
+    <!-- Part face_plate -->
+    <visual>
+      <origin xyz="0 -0.05095 -0.13" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/face_plate.stl"/>
+      </geometry>
+      <material name="face_plate_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.05095 -0.13" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="file://$(find description)/meshes/face_plate.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Front Left -->
+  <joint name="light_fl_joint" type="fixed">
+    <parent link="face_plate"/>
+    <child link="light_fl"/>
+    <origin xyz="0.047 0.04 0.0" rpy="1.57 0 0"/>
+  </joint>
+
+  <!-- Front Right -->
+  <joint name="light_fr_joint" type="fixed">
+    <parent link="face_plate"/>
+    <child link="light_fr"/>
+    <origin xyz="-0.047 0.04 0.0" rpy="1.57 0 0"/>
+  </joint>
+
+  <!-- Bottom Left -->
+  <joint name="light_bl_joint" type="fixed">
+    <parent link="face_plate"/>
+    <child link="light_bl"/>
+    <origin xyz="0.047 -0.035 0.0" rpy="1.57 0 0"/>
+  </joint>
+
+  <!-- Bottom Right -->
+  <joint name="light_br_joint" type="fixed">
+    <parent link="face_plate"/>
+    <child link="light_br"/>
+    <origin xyz="-0.047 -0.035 0.0" rpy="1.57 0 0"/>
+  </joint>
+
+  <!-- Joint from base_link to face_plate -->
+  <joint name="face_plate_joint" type="fixed">
+    <origin xyz="0.13 0.000319729 0.0506946" rpy="1.5708 -0 1.5708"/>
+    <parent link="base_link"/>
+    <child link="face_plate"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+</robot>
